@@ -39,7 +39,7 @@ async function createTextSticker(text) {
   const canvas = createCanvas(1024, 1024);
   const ctx = canvas.getContext('2d');
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.font = 'bold 90px "NotoColorEmoji", sans-serif';
+  ctx.font = 'bold 90px "NotoColorEmoji", Arial';
   ctx.fillStyle = '#FFFFFF';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
@@ -49,15 +49,10 @@ async function createTextSticker(text) {
 
 async function getAIResponse(prompt) {
   try {
-    // Mendapatkan model generatif
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-
-    // Membuat permintaan ke model generatif
     const result = await model.generateContent(prompt);
-
-    // Mengakses respons dari hasil
     const response = await result.response;
-    const responseText = response.text(); // Fungsi untuk mendapatkan teks dari respons
+    const responseText = response.text();
     return responseText;
   } catch (error) {
     console.error("Error fetching AI response:", error);
@@ -67,6 +62,27 @@ async function getAIResponse(prompt) {
 
 // Listen for incoming messages
 client.on('message', async (message) => {
+  // First-time greeting
+  if (message.body === 'hi' || message.body === 'halo') {
+    const welcomeMessage = `
+🌟 *Selamat datang di bot Rinbim.dev | Beta* 🌟
+ 
+*Fitur yang tersedia:*
+1️⃣ Buat stiker dari teks ➡️ _Ketik: .stikerteks [Teks]_
+2️⃣ Ubah gambar jadi stiker ➡️ _Kirim gambar lalu ketik: .stiker_
+3️⃣ Tanya apa saja ke AI ➡️ _Ketik: .ai [Pertanyaan]_
+
+💼 Kami juga menyediakan jasa:
+- Pembuatan Website (Frontend & Backend)
+- Pembuatan Script Custom
+
+🔥 Hubungi admin untuk info lebih lanjut!
+💬 Semoga membantu! 😊
+    `;
+    client.sendMessage(message.from, welcomeMessage);
+    return;
+  }
+
   // Generate text sticker
   if (message.body.startsWith('.stikerteks ')) {
     const text = message.body.slice(12).trim();
