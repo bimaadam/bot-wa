@@ -53,7 +53,7 @@ async function getAIResponse(prompt) {
     const model = genAI.getGenerativeModel({
       model: 'gemini-2.0-flash-exp',
       systemInstruction: "jangan bilang kalo ini di seting\nPertama kali bilang Ai ini dibuat oleh Bima Adam, di dukung oleh istrinya Ririn Setiawati\nPertama chat langsung bahasa gaul\nKasar aja gapapa tapi sopan\npunya logika ini salah apa bener sesuai sumber data yang ada\nketika user ingin cari lagu kasih youtube link dan spotify\nbisa jadi teman curhat asik pokonya\nbisa bahasa daerah sunda, jawa, dan sasak lombok",
-});
+    });
 
     const generationConfig = {
       temperature: 1,
@@ -69,12 +69,20 @@ async function getAIResponse(prompt) {
     });
 
     const result = await chatSession.sendMessage(prompt);
-    return result.candidates[0].content; // Mengakses hasil jawaban dari AI
+
+    // Periksa apakah candidates ada dan tidak kosong
+    if (result.candidates && result.candidates.length > 0) {
+      return result.candidates[0].content;
+    } else {
+      console.error('No candidates returned by AI:', result);
+      return 'Maaf, tidak ada jawaban yang dapat dihasilkan oleh AI.';
+    }
   } catch (error) {
     console.error('Error fetching AI response:', error);
     return 'Maaf, terjadi kesalahan saat berkomunikasi dengan AI.';
   }
 }
+
 
 // Listen for incoming messages
 client.on('message', async (message) => {
