@@ -2,8 +2,8 @@ const { Client } = require('whatsapp-web.js');
 
 const client = new Client({
   puppeteer: {
-    executablePath: '/usr/bin/chromium-browser', // Path Chromium dari Railway
-    args: ['--no-sandbox', '--disable-setuid-sandbox'], // Tambahin args buat environment container
+    executablePath: '/usr/bin/google-chrome', // Atau path browser yang udah ada di Railway
+    args: ['--no-sandbox', '--disable-setuid-sandbox'], // Buat jalanin Puppeteer di container
   },
 });
 
