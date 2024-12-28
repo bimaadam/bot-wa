@@ -39,7 +39,7 @@ async function createTextSticker(text) {
   const canvas = createCanvas(1024, 1024);
   const ctx = canvas.getContext('2d');
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.font = 'bold 90px "NotoColorEmoji", Arial';
+  ctx.font = 'bold 90px "NotoColorEmoji", sans-serif';
   ctx.fillStyle = '#FFFFFF';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
@@ -49,10 +49,15 @@ async function createTextSticker(text) {
 
 async function getAIResponse(prompt) {
   try {
+    // Mendapatkan model generatif
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+    // Membuat permintaan ke model generatif
     const result = await model.generateContent(prompt);
+
+    // Mengakses respons dari hasil
     const response = await result.response;
-    const responseText = response.text();
+    const responseText = response.text(); // Fungsi untuk mendapatkan teks dari respons
     return responseText;
   } catch (error) {
     console.error("Error fetching AI response:", error);
@@ -60,7 +65,6 @@ async function getAIResponse(prompt) {
   }
 }
 
-// Listen for incoming messages
 client.on('message', async (message) => {
   // First-time greeting
   if (message.body === 'hi' || message.body === 'halo') {
@@ -79,10 +83,17 @@ client.on('message', async (message) => {
 🔥 Hubungi admin untuk info lebih lanjut!
 💬 Semoga membantu! 😊
     `;
-    client.sendMessage(message.from, welcomeMessage);
+    try {
+      await client.sendMessage(message.from, welcomeMessage);
+    } catch (error) {
+      console.error('Error sending message:', error);
+    }
     return;
   }
+});
 
+// Listen for incoming messages
+client.on('message', async (message) => {
   // Generate text sticker
   if (message.body.startsWith('.stikerteks ')) {
     const text = message.body.slice(12).trim();
