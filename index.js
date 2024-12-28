@@ -72,15 +72,20 @@ async function getAIResponse(prompt) {
 
     // Debugging isi response
     console.log('Full Response:', JSON.stringify(result, null, 2));
-    console.log('Candidates:', result.candidates);
 
-    // Akses 'content' dengan aman
-    if (result.candidates && result.candidates.length > 0) {
-      const responseContent = result.candidates[0].content;
+    // Validasi dan akses teks
+    if (
+      result.candidates &&
+      result.candidates.length > 0 &&
+      result.candidates[0].content &&
+      result.candidates[0].content.parts &&
+      result.candidates[0].content.parts.length > 0
+    ) {
+      const responseContent = result.candidates[0].content.parts[0].text;
       return responseContent ? responseContent : 'Maaf, respons kosong.';
     } else {
-      console.error('No candidates returned by AI:', result);
-      return 'Maaf, tidak ada jawaban yang dapat dihasilkan oleh AI.';
+      console.error('Invalid response structure:', result);
+      return 'Maaf, terjadi kesalahan dalam memahami respons AI.';
     }
   } catch (error) {
     console.error('Error fetching AI response:', error);
