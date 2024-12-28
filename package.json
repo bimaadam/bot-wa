@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "main": "bot.js",
   "scripts": {
+    "install-chromium": "apt-get update && apt-get install -y chromium",
+    "start": "npm run install-chromium && node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
