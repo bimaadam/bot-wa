@@ -30,7 +30,7 @@ async function run() {
     ],
   });
 
-  const result = await chatSession.sendMessage("halo");
+  const result = await chatSession.sendMessage("medning turu");
   console.log(result.response.text());
 }
 
