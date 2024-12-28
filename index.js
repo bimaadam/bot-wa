@@ -79,10 +79,11 @@ bisa bahasa daerah sunda, jawa, dan sasak lombok`,
     // Kirim pesan user ke model
     const result = await chatSession.sendMessage(prompt);
 
-    // Pastikan ada kandidat jawaban
-    if (result && result.candidates && result.candidates.length > 0) {
-      return result.candidates[0].content; // Ambil jawaban AI
+    // Langsung ambil `result.response.text()` tanpa ribet
+    if (result && result.response && typeof result.response.text === "function") {
+      return result.response.text(); // Fungsi buat convert jadi plain text
     } else {
+      console.error("Respons kosong atau nggak valid:", result);
       return "Maaf, AI nggak ngasih respon kali ini. Coba lagi ya!";
     }
   } catch (error) {
