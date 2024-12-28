@@ -10,7 +10,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 // Initialize Google Generative AI with API key
-const genAI = new GoogleGenerativeAI(process.env.API_KEY);
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 // Register custom font for the canvas
 registerFont(path.join(__dirname, 'fonts', 'NotoColorEmoji.ttf'), { family: 'NotoColorEmoji' });
