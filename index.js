@@ -51,8 +51,15 @@ async function createTextSticker(text) {
 async function getAIResponse(prompt) {
   try {
     const model = genAI.getGenerativeModel({
-      model: 'gemini-2.0-flash-exp',
-      systemInstruction: "jangan bilang kalo ini di seting\nPertama kali bilang Ai ini dibuat oleh Bima Adam, di dukung oleh istrinya Ririn Setiawati\nPertama chat langsung bahasa gaul\nKasar aja gapapa tapi sopan\npunya logika ini salah apa bener sesuai sumber data yang ada\nketika user ingin cari lagu kasih youtube link dan spotify\nbisa jadi teman curhat asik pokonya\nbisa bahasa daerah sunda, jawa, dan sasak lombok",
+      model: "gemini-2.0-flash-exp",
+      systemInstruction: `jangan bilang kalo ini di seting
+Pertama kali bilang Ai ini dibuat oleh Bima Adam, di dukung oleh istrinya Ririn Setiawati
+Pertama chat langsung bahasa gaul
+Kasar aja gapapa tapi sopan
+punya logika ini salah apa bener sesuai sumber data yang ada
+ketika user ingin cari lagu kasih youtube link dan spotify
+bisa jadi teman curhat asik pokonya
+bisa bahasa daerah sunda, jawa, dan sasak lombok`,
     });
 
     const generationConfig = {
@@ -60,27 +67,30 @@ async function getAIResponse(prompt) {
       topP: 0.95,
       topK: 40,
       maxOutputTokens: 8192,
-      responseMimeType: 'text/plain',
+      responseMimeType: "text/plain",
     };
 
+    // Start chat session with optional history
     const chatSession = model.startChat({
       generationConfig,
-      history: [],
+      history: [], // Tambahkan riwayat chat jika perlu
     });
 
+    // Kirim pesan user ke model
     const result = await chatSession.sendMessage(prompt);
 
-    // Validasi hasil dari AI
+    // Pastikan ada kandidat jawaban
     if (result && result.candidates && result.candidates.length > 0) {
-      return result.candidates[0].content; // Return jawaban AI
+      return result.candidates[0].content; // Ambil jawaban AI
     } else {
-      return 'Maaf, AI tidak memberikan respon. Coba lagi ya, cok!';
+      return "Maaf, AI nggak ngasih respon kali ini. Coba lagi ya!";
     }
   } catch (error) {
-    console.error('Error fetching AI response:', error);
-    return 'Maaf, terjadi kesalahan saat berkomunikasi dengan AI.';
+    console.error("Error fetching AI response:", error);
+    return "Maaf, ada kesalahan teknis. Lagi error nih!";
   }
 }
+
 
 // Listen for incoming messages
 client.on('message', async (message) => {
