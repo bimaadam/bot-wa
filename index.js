@@ -70,9 +70,14 @@ async function getAIResponse(prompt) {
 
     const result = await chatSession.sendMessage(prompt);
 
-    // Periksa apakah candidates ada dan tidak kosong
+    // Debugging isi response
+    console.log('Full Response:', JSON.stringify(result, null, 2));
+    console.log('Candidates:', result.candidates);
+
+    // Akses 'content' dengan aman
     if (result.candidates && result.candidates.length > 0) {
-      return result.candidates[0].content;
+      const responseContent = result.candidates[0].content;
+      return responseContent ? responseContent : 'Maaf, respons kosong.';
     } else {
       console.error('No candidates returned by AI:', result);
       return 'Maaf, tidak ada jawaban yang dapat dihasilkan oleh AI.';
@@ -82,7 +87,6 @@ async function getAIResponse(prompt) {
     return 'Maaf, terjadi kesalahan saat berkomunikasi dengan AI.';
   }
 }
-
 
 // Listen for incoming messages
 client.on('message', async (message) => {
