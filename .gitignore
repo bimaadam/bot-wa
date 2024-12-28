@@ -1,0 +1,59 @@
+# .gitignore Lengkap untuk Proyek Umum
+
+# 1. Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+.env
+
+# 2. Python
+__pycache__/
+*.py[cod]
+.env
+*.egg-info/
+*.egg
+
+# 3. Java
+*.class
+*.jar
+*.war
+target/
+.idea/
+*.iml
+
+# 4. Visual Studio Code
+.vscode/
+*.code-workspace
+
+# 5. MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# 6. Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# 7. IDE dan Editor Lainnya
+*.sublime-workspace
+*.sublime-project
+.idea/
+.project
+.classpath
+
+# 8. File Konfigurasi Umum
+.env
+*.log
+*.tmp
+*.bak
+
+# 9. Folder dan File Khusus
+dist/
+build/
+coverage/
+*.swp  # file swap dari Vim
+
+# 10. Catatan
+# Pastikan untuk menyesuaikan file .gitignore sesuai dengan kebutuhan spesifik proyek Anda.
+# Anda dapat menambahkan atau menghapus entri sesuai dengan file dan folder yang ingin Anda abaikan dalam repositori Git Anda.

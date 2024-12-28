@@ -1,0 +1,15 @@
+2024/12/28-14:49:40.615 2528 Reusing MANIFEST C:\Users\BimaAdam\Documents\DataBima\Projek Ngoding\wa-bot\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2024/12/28-14:49:40.615 2528 Recovering log #163
+2024/12/28-14:49:40.636 2528 Reusing old log C:\Users\BimaAdam\Documents\DataBima\Projek Ngoding\wa-bot\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000163.log 
+2024/12/28-14:49:42.583 2070 Manual compaction at level-0 from '\x00J\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00K\x00\x00\x00' @ 0 : 0; will stop at (end)
+2024/12/28-14:56:18.966 1d9c Level-0 table #169: started
+2024/12/28-14:56:18.999 1d9c Level-0 table #169: 1261383 bytes OK
+2024/12/28-14:56:19.001 1d9c Delete type=0 #163
+2024/12/28-14:56:25.734 1d9c Compacting 1@1 + 2@2 files
+2024/12/28-14:56:25.849 1d9c Generated table #170@1: 64501 keys, 2234646 bytes
+2024/12/28-14:56:25.864 1d9c Generated table #171@1: 9767 keys, 303998 bytes
+2024/12/28-14:56:25.864 1d9c Compacted 1@1 + 2@2 files => 2538644 bytes
+2024/12/28-14:56:25.865 1d9c compacted to: files[ 0 0 2 0 0 0 0 ]
+2024/12/28-14:56:25.865 1d9c Delete type=2 #165
+2024/12/28-14:56:25.866 1d9c Delete type=2 #166
+2024/12/28-14:56:25.866 1d9c Delete type=2 #169
