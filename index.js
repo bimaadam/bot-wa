@@ -426,9 +426,9 @@ client.on('message', async (message) => {
     }
 
     // First-time greeting
-    else if (message.body === 'hi' || message.body === 'halo') {
+    else if (message.body === 'p' || message.body === 'halo' || message.body === 'P') {
       const welcomeMessage = `
-🌟 *Selamat datang di bot Rinbim.dev | Beta* 🌟
+🌟 *Selamat datang di bot Rinbim.dev | BetaRelease* 🌟
 
 *Fitur yang tersedia:*
 1️⃣ Buat stiker dari teks ➡️ _Ketik: .stikerteks [Teks]_
