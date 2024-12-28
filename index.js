@@ -70,22 +70,11 @@ async function getAIResponse(prompt) {
 
     const result = await chatSession.sendMessage(prompt);
 
-    // Debugging isi response
-    console.log('Full Response:', JSON.stringify(result, null, 2));
-
-    // Validasi dan akses teks
-    if (
-      result.candidates &&
-      result.candidates.length > 0 &&
-      result.candidates[0].content &&
-      result.candidates[0].content.parts &&
-      result.candidates[0].content.parts.length > 0
-    ) {
-      const responseContent = result.candidates[0].content.parts[0].text;
-      return responseContent ? responseContent : 'Maaf, respons kosong.';
+    // Validasi hasil dari AI
+    if (result && result.candidates && result.candidates.length > 0) {
+      return result.candidates[0].content; // Return jawaban AI
     } else {
-      console.error('Invalid response structure:', result);
-      return 'Maaf, terjadi kesalahan dalam memahami respons AI.';
+      return 'Maaf, AI tidak memberikan respon. Coba lagi ya, cok!';
     }
   } catch (error) {
     console.error('Error fetching AI response:', error);
