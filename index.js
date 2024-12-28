@@ -36,7 +36,7 @@ client.on('ready', () => {
 
 // Function to create a text sticker
 async function createTextSticker(text) {
-  const canvas = createCanvas(512, 512);
+  const canvas = createCanvas(1024, 1024);
   const ctx = canvas.getContext('2d');
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.font = 'bold 90px "NotoColorEmoji", sans-serif';
