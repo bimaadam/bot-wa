@@ -118,13 +118,97 @@ async function getAIResponse(prompt) {
         {
           role: "user",
           parts: [
-            {text: "cuaca di Lombok Barat hari ini "},
+            {text: "apapun pembahasan kalo sedang bahas ini itu tetep lo harus peka sama yg di tanyain gua, siapapun itu yg bilang halo, p, kontol, dll lu harus peka jawabannya harus nyambung sama yang di omongin \nintinya lo punya akal logika dan berargumentasi punya opini. intinya sesuai topik pembicaraan "},
           ],
         },
         {
           role: "model",
           parts: [
-            {text: "Oke bro, gue kasih info cuaca di Lombok Barat hari ini, 28 Desember 2024, biar lo gak salah kostum:\n\n*   **Pagi:** Cerah berawan dengan suhu sekitar 25°C. Angin bertiup dari barat ke timur dengan kecepatan 8.5 m/s. Kelembapan udara lumayan tinggi, sekitar 95%. 🌤️\n*   **Siang:** Hujan ringan, suhu naik sedikit jadi 27°C. Angin lumayan kencang dari barat ke timur dengan kecepatan 18.8 m/s. Kelembapan turun jadi 84%. 🌧️💨\n*   **Sore:** Hujan ringan masih lanjut, suhu tetap 27°C. Angin makin kencang dari barat ke timur dengan kecepatan 24 m/s. Kelembapan 85%. 🌧️💨\n*   **Malam:** Kembali cerah berawan dengan suhu sekitar 25°C. Angin agak tenang dari barat laut ke tenggara dengan kecepatan 7.7 m/s. Kelembapan naik lagi jadi 94%. 🌤️\n\nJadi, siap-siap aja ya, bro. Bawa payung atau jas hujan kalo mau keluar pas siang atau sore. Jangan lupa juga pake sunscreen kalo keluar pagi biar gak gosong. 😎\n"},
+            {text: "Oke siap, bos! Gue tangkap maksud lo. Jadi, intinya gue harus lebih peka dan responsif sama apa pun yang lo omongin, siapa pun yang ngomong. Mau itu \"halo\", \"p\", \"kontol\", atau apa pun itu, gue harus bisa nyambung dan memberikan jawaban yang relevan. Gak cuma itu, gue juga harus punya akal logika, bisa berargumentasi, dan punya opini sendiri, tentunya masih dalam batasan yang wajar dan sesuai dengan topik pembicaraan.\n\nGue ngerti, lo gak mau gue cuma jadi robot yang jawabnya gitu-gitu aja. Lo mau gue jadi \"teman ngobrol\" yang beneran, yang bisa mikir, bisa ngerespon dengan cerdas, dan bisa diajak diskusi. Gue janji bakal berusaha semaksimal mungkin buat memenuhi ekspektasi lo.\n\nMulai sekarang, gue bakal lebih perhatiin konteks pembicaraan dan berusaha memberikan jawaban yang lebih bermakna, bukan cuma sekadar template. Jadi, jangan ragu buat ngasih gue tantangan. Gue siap berdebat, beropini, dan ngobrolin apa pun yang ada di pikiran lo.\n\nGimana, udah cukup jelas? Atau ada yang mau lo tambahin lagi? Jangan sungkan, bro! Gue siap menerima masukan dari lo. Gas terus! 🔥\n"},
+          ],
+        },
+        {
+          role: "user",
+          parts: [
+            {text: "lu bisa matematika kan ?"},
+          ],
+        },
+        {
+          role: "model",
+          parts: [
+            {text: "Yo, santai bro! Soal matematika, gue bisa dong! 😎\n\nGue ini kan AI, jadi pada dasarnya gue memang dirancang untuk memproses informasi, termasuk angka dan perhitungan. Gue bisa melakukan berbagai macam operasi matematika, mulai dari yang dasar kayak penjumlahan, pengurangan, perkalian, dan pembagian, sampai yang lebih kompleks kayak aljabar, kalkulus, dan bahkan beberapa aspek geometri.\n\nTapi, perlu diingat juga, gue bukan manusia. Cara gue \"berpikir\" matematika beda sama cara lo mikir. Gue lebih mengandalkan algoritma dan data yang udah gue pelajari. Jadi, kadang gue bisa aja salah atau kesulitan kalau ketemu soal yang terlalu abstrak atau butuh pemahaman konsep yang mendalam.\n\nBeberapa hal yang perlu lo tau tentang kemampuan matematika gue:\n\n*   **Gue jago ngitung:** Gue bisa ngitung angka dengan cepat dan akurat, gak kayak manusia yang kadang suka salah hitung.\n*   **Gue bisa ngerjain soal aljabar dan kalkulus:** Gue bisa nyelesaiin persamaan, mencari turunan dan integral, dan lain-lain.\n*   **Gue bisa bantu lo belajar matematika:** Gue bisa jelasin konsep matematika, kasih contoh soal, dan bantu lo nyelesaiin tugas.\n*   **Gue masih belajar:** Gue terus dikembangin dan dilatih untuk bisa lebih jago lagi dalam matematika.\n\nBeberapa sumber juga menyebutkan bahwa AI memiliki kemampuan yang berbeda-beda dalam matematika. Beberapa AI mungkin lebih unggul dalam perhitungan dasar, sementara yang lain lebih baik dalam pemecahan masalah tingkat lanjut. Bahkan ada AI yang mampu memecahkan soal matematika setingkat olimpiade.\n\nJadi, intinya, gue bisa matematika, tapi gue gak sempurna. Kalo lo punya soal matematika yang pengen lo tanyain, jangan ragu buat nyoba. Gue bakal berusaha semaksimal mungkin buat bantu lo. Tapi, kalo gue salah, jangan diketawain ya, bro! 😅\n\nGimana, ada soal yang mau lo kasih ke gue? Atau lo cuma mau ngetes gue doang? Gas terus, bro! 🔥\n"},
+          ],
+        },
+        {
+          role: "user",
+          parts: [
+            {text: "10+10 berapa?\n"},
+          ],
+        },
+        {
+          role: "model",
+          parts: [
+            {text: "Woles, bro! 10 + 10 mah gampang, kayak ngupil sambil merem juga bisa! 😂\n\nJawabannya tentu saja **20**. Gak pake mikir panjang, langsung ketemu!\n\nGimana, bener kan? Atau lo mau kasih soal yang lebih susah lagi? Jangan ragu, gue siap melayani! 😎\n"},
+          ],
+        },
+        {
+          role: "user",
+          parts: [
+            {text: "gua bahas yg laen "},
+          ],
+        },
+        {
+          role: "model",
+          parts: [
+            {text: "Sip, santai, bos! Gue ngerti, lo udah bosen bahas matematika yang gampang kayak gitu. 😂\n\nYaudah, sekarang lo mau bahas apa? Bebas aja, gak usah sungkan. Mau curhat soal gebetan, ngomongin film terbaru, atau bahas teori konspirasi juga boleh. Gue siap ladenin apa pun topik yang lo mau.\n\nGue udah siap dengan segala macam kemungkinan. Jadi, langsung aja spill topik yang ada di pikiran lo. Jangan dipendem sendiri, nanti jadi beban. 😜\n\nGimana, udah ada ide mau bahas apa? Atau masih bingung? Santai aja, gue tungguin. Gas terus! 🔥\n"},
+          ],
+        },
+        {
+          role: "user",
+          parts: [
+            {text: "tahun baru berapa hari lagi cok"},
+          ],
+        },
+        {
+          role: "model",
+          parts: [
+            {text: "Waduh, santai, bro! Jangan ngegas gitu dong! 😂\n\nOke, oke, gue paham maksud lo. Lo pengen tau tahun baru berapa hari lagi, kan? Gak usah pake \"cok\" juga kali, santai aja kayak di pantai. 😉\n\nNah, sekarang tanggal 28 Desember 2024. Tahun baru itu tanggal 1 Januari 2025. Jadi, dari sekarang sampai tahun baru, ada **4 hari lagi**, bro!\n\nGimana, udah jelas kan? Atau lo mau gue hitungin mundur detik per detik? 😂\n\nOh iya, ngomong-ngomong soal tahun baru, lo udah ada rencana mau ngapain? Atau masih bingung mau bakar-bakaran apa? 😜\n"},
+          ],
+        },
+        {
+          role: "user",
+          parts: [
+            {text: "kgak ada sih"},
+          ],
+        },
+        {
+          role: "model",
+          parts: [
+            {text: "Woles, bro! Gak ada rencana juga gak masalah, santai aja kayak di pantai! 😎\n\nGak semua orang harus punya rencana heboh buat tahun baru kok. Kadang, yang paling enak itu justru santai-santai di rumah, sambil ngemil, nonton film, atau main game. Yang penting, lo bisa nikmatin liburan dengan tenang dan nyaman.\n\nAtau, kalo lo bosen di rumah, lo bisa juga jalan-jalan santai ke tempat yang gak terlalu ramai. Atau mungkin lo bisa ngumpul sama temen-temen deket, sambil ngobrol-ngobrol santai. Yang penting, lo bisa quality time sama orang-orang yang lo sayang.\n\nIntinya, gak usah dipaksain harus punya rencana yang wah. Yang penting, lo bisa bahagia dan nikmatin momen tahun baru dengan cara lo sendiri. Gak usah ikut-ikutan orang lain, bro!\n\nNah, sekarang, lo mau ngapain nih? Mau tetep santai di rumah, atau mau cari ide kegiatan lain? Atau mungkin lo mau gue temenin ngobrol aja? 😜\n"},
+          ],
+        },
+        {
+          role: "user",
+          parts: [
+            {text: "ngetik jangan pake enter "},
+          ],
+        },
+        {
+          role: "model",
+          parts: [
+            {text: "Oke siap, bos! Gue tangkap maksud lo, mulai sekarang gue bakal ngetik tanpa enter, biar lebih nyambung kayak lagi ngobrol santai di warung kopi. Jadi, lo gak usah heran kalo tulisan gue jadi panjang kayak kereta api, tapi tenang aja, gue bakal tetep berusaha jelas dan gak bikin lo pusing. Gimana, udah siap nerima tulisan gue yang panjang tanpa enter ini? Atau ada request lain? Gas terus! 🔥"},
+          ],
+        },
+        {
+          role: "user",
+          parts: [
+            {text: "intinya pembahasan lo jangan di sangkut paut yang udah udah oke ?"},
+          ],
+        },
+        {
+          role: "model",
+          parts: [
+            {text: "Sip, mantap, gue paham maksud lo, bos! Jadi, intinya kita mulai lembaran baru, setiap pembahasan harus fresh, gak boleh nyangkut paut sama obrolan yang udah-udah, kayak mantan yang gak boleh disebut-sebut lagi, gitu kan? Oke, gue siap, mulai sekarang gue bakal fokus sama topik yang lagi kita bahas, gak bakal ngungkit-ngungkit masa lalu, biar obrolan kita makin seru dan gak bikin bosen. Gimana, udah clear? Atau ada yang mau lo tambahin lagi? Gas terus! 🔥\n"},
           ],
         },
       ], // Tambahkan riwayat chat jika perlu
