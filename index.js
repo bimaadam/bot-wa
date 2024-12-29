@@ -414,7 +414,7 @@ client.on('message', async (message) => {
     }
 
     // Pengecualian keyword tertentu sebelum proses AI
-const excludedKeywords = ['.stiker', '.help', '.menu', '.stikerteks', 'p', 'halo', Pzzz ]; // Daftar keyword yang harus di-skip AI
+const excludedKeywords = ['.stiker', '.help', '.menu', '.stikerteks', 'p', 'halo' ]; // Daftar keyword yang harus di-skip AI
 if (excludedKeywords.some(keyword => message.body.startsWith(keyword))) {
   return; // Langsung return, skip proses AI
 }
