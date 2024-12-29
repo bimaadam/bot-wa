@@ -414,7 +414,7 @@ client.on('message', async (message) => {
     }
 
     // Pengecualian keyword tertentu sebelum proses AI
-const excludedKeywords = ['.stiker', '.help', '.menu', '.stikerteks', 'p', 'halo', 'P' ]; // Daftar keyword yang harus di-skip AI
+const excludedKeywords = ['.stiker', '.help', '.menu', '.stikerteks', 'p', 'halo',  ]; // Daftar keyword yang harus di-skip AI
 if (excludedKeywords.some(keyword => message.body.startsWith(keyword))) {
   return; // Langsung return, skip proses AI
 }
@@ -432,8 +432,8 @@ if (excludedKeywords.some(keyword => message.body.startsWith(keyword))) {
     return;
   }
 
-  // Bot merespon jika pesan di-reply di grup
-  if (message.isGroupMsg && message.hasQuotedMsg) {
+  // Bot merespon jika pesan di-reply
+  if (message.hasQuotedMsg) {
     const quotedMsg = await message.getQuotedMessage(); // Ambil pesan yang di-reply
     if (quotedMsg.fromMe) {
       // Jika pesan yang di-reply berasal dari bot
@@ -447,24 +447,8 @@ if (excludedKeywords.some(keyword => message.body.startsWith(keyword))) {
       return;
     }
   }
-
-  // Bot merespon di chat pribadi tanpa mention atau reply
-  if (!message.isGroupMsg) {
-    const prompt = message.body.trim(); // Ambil teks langsung dari pesan
-    if (!prompt) {
-      await client.sendMessage(
-        message.from,
-        'Pertanyaan atau perintahnya mana, cok? Jangan kosong doang dong!'
-      );
-      return;
-    }
-
-    const response = await getAIResponse(prompt);
-    await client.sendMessage(message.from, response); // Balas langsung ke user
-    return;
-  }
     // First-time greeting
-    else if (message.body === 'p' || message.body === 'halo' || message.body === 'P' || message.body === 'menu') {
+    else if (message.body === 'p' || message.body === 'halo' || message.body === 'P') {
       const welcomeMessage = `
 🌟 *Selamat datang di bot Rinbim.dev | BetaRelease* 🌟
 
