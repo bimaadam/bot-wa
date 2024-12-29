@@ -414,11 +414,14 @@ client.on('message', async (message) => {
     }
 
     // Use AI for answering questions
-    if (message.mentionedIds.includes(client.info.wid._serialized)) {
-      // Hapus mention (@Bot) dari pesan, ambil teks sisanya
-      const prompt = message.body.replace(/@\S+/g, '').trim();
+    if (message.body.trim()) {
+      const prompt = message.body.trim(); // Ambil teks langsung dari pesan
+    
       if (!prompt) {
-        await client.sendMessage(message.from, 'Pertanyaan atau perintahnya mana, cok? Kirim pakai format: .ai [Pertanyaan/Perintah]');
+        await client.sendMessage(
+          message.from,
+          'Pertanyaan atau perintahnya mana, cok? Jangan kosong doang dong!'
+        );
         return;
       }
 
