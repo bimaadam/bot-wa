@@ -414,8 +414,9 @@ client.on('message', async (message) => {
     }
 
     // Use AI for answering questions
-    else if (message.body.startsWith('.ai ')) {
-      const prompt = message.body.slice(4).trim();
+    if (message.mentionedIds.includes(client.info.wid._serialized)) {
+      // Hapus mention (@Bot) dari pesan, ambil teks sisanya
+      const prompt = message.body.replace(/@\S+/g, '').trim();
       if (!prompt) {
         await client.sendMessage(message.from, 'Pertanyaan atau perintahnya mana, cok? Kirim pakai format: .ai [Pertanyaan/Perintah]');
         return;
