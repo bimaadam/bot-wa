@@ -413,10 +413,15 @@ client.on('message', async (message) => {
       await client.sendMessage(message.from, media, { sendMediaAsSticker: true });
     }
 
+    // Pengecualian keyword tertentu sebelum proses AI
+const excludedKeywords = ['.stiker', '.help', '.menu', '.stikerteks']; // Daftar keyword yang harus di-skip AI
+if (excludedKeywords.some(keyword => message.body.startsWith(keyword))) {
+  return; // Langsung return, skip proses AI
+}
+
     // Use AI for answering questions
     if (message.body.trim()) {
       const prompt = message.body.trim(); // Ambil teks langsung dari pesan
-    
       if (!prompt) {
         await client.sendMessage(
           message.from,
