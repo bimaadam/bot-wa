@@ -447,7 +447,7 @@ if (message.isGroupMsg && message.hasQuotedMsg) {
   }
 }
 
-// Bot merespon pesan langsung di chat pribadi
+// Bot merespon hanya di chat pribadi
 if (!message.isGroupMsg) {
   const prompt = message.body.trim(); // Ambil teks langsung dari pesan
   if (!prompt) {
