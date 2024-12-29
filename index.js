@@ -419,33 +419,56 @@ if (excludedKeywords.some(keyword => message.body.startsWith(keyword))) {
   return; // Langsung return, skip proses AI
 }
 
-    // Event handler untuk pesan
-  // Bot merespon jika disebut di grup
-  if (message.isGroupMsg && message.mentionedIds.includes(client.info.wid._serialized)) {
-    const prompt = message.body.replace(/@\S+/g, '').trim(); // Hapus mention dari teks
-    if (!prompt) {
-      await client.sendMessage(message.from, 'Pertanyaan atau perintahnya mana, cok? Jangan cuma nge-mention doang!');
-      return;
-    }
-    const response = await getAIResponse(prompt);
-    await message.reply(response); // Balas langsung ke pesan user
-    return;
-  }
+  // Cek apakah pesan dari grup atau pribadi
+  const isGroup = message.isGroupMsg;
 
-  // Bot merespon jika pesan di-reply
-  if (message.hasQuotedMsg) {
-    const quotedMsg = await message.getQuotedMessage(); // Ambil pesan yang di-reply
-    if (quotedMsg.fromMe) {
-      // Jika pesan yang di-reply berasal dari bot
-      const prompt = message.body.trim();
+  // --- LOGIKA UNTUK GRUP ---
+  if (isGroup) {
+    // Bot merespon jika disebut di grup
+    if (message.mentionedIds.includes(client.info.wid._serialized)) {
+      const prompt = message.body.replace(/@\S+/g, '').trim(); // Hapus mention dari teks
       if (!prompt) {
-        await message.reply('Pertanyaan atau perintahnya mana, cok? Jangan kosong doang!');
+        await client.sendMessage(message.from, 'Pertanyaan atau perintahnya mana, cok? Jangan cuma nge-mention doang!');
         return;
       }
       const response = await getAIResponse(prompt);
-      await message.reply(response); // Balas langsung ke pesan
+      await message.reply(response); // Balas langsung ke pesan user
       return;
     }
+
+    // Bot merespon jika pesan di-reply
+    if (message.hasQuotedMsg) {
+      const quotedMsg = await message.getQuotedMessage(); // Ambil pesan yang di-reply
+      if (quotedMsg.fromMe) {
+        // Jika pesan yang di-reply berasal dari bot
+        const prompt = message.body.trim();
+        if (!prompt) {
+          await message.reply('Pertanyaan atau perintahnya mana, cok? Jangan kosong doang!');
+          return;
+        }
+        const response = await getAIResponse(prompt);
+        await message.reply(response); // Balas langsung ke pesan
+        return;
+      }
+    }
+
+    return; // Grup selesai di sini
+  }
+
+  // --- LOGIKA UNTUK CHAT PRIBADI ---
+  if (!isGroup) {
+    const prompt = message.body.trim(); // Ambil teks langsung dari pesan
+    if (!prompt) {
+      await client.sendMessage(
+        message.from,
+        'Pertanyaan atau perintahnya mana, cok? Jangan kosong doang dong!'
+      );
+      return;
+    }
+
+    const response = await getAIResponse(prompt);
+    await client.sendMessage(message.from, response); // Balas langsung ke user
+    return;
   }
     // First-time greeting
     else if (message.body === 'p' || message.body === 'halo' || message.body === 'P' || message.body === 'menu') {
