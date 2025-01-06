@@ -24,15 +24,26 @@ const client = new Client({
   },
 });
 
-// Generate QR code for WhatsApp web
-// client.on('qr', (qr) => {
-//   qrcode.generate(qr, { small: true });
-// });
+client.on('qr', (qr) => {
+  console.log('QR Code Generated! Scan QR untuk login.');
+});
 
-// Bot is ready
 client.on('ready', () => {
   console.log('Bot sudah siap!');
 });
+
+client.on('authenticated', () => {
+  console.log('WhatsApp Web berhasil login!');
+});
+
+client.on('auth_failure', (msg) => {
+  console.error('Login gagal:', msg);
+});
+
+client.on('disconnected', (reason) => {
+  console.log('Bot disconnect karena:', reason);
+});
+
 
 // Function to create a text sticker
 async function createTextSticker(text) {
