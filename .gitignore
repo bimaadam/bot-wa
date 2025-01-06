@@ -1,5 +1,5 @@
 # .gitignore Lengkap untuk Proyek Umum
-!/.wwebjs_auth/**   # force include folder sesi buat Railway
+!.wwebjs_auth/
 
 # 1. Node.js
 node_modules/
