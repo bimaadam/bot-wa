@@ -17,8 +17,9 @@ registerFont(path.join(__dirname, 'fonts', 'NotoColorEmoji.ttf'), { family: 'Not
 
 const client = new Client({
   authStrategy: new LocalAuth({
-    dataPath: './.wwebjs_auth', // Pastikan path sama dengan yang lu upload
+    dataPath: '/mnt/data/.wwebjs_auth', // Railway Storage Path
   }),
+  
   puppeteer: {
     headless: true,
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
