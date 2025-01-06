@@ -25,9 +25,9 @@ const client = new Client({
 });
 
 // Generate QR code for WhatsApp web
-client.on('qr', (qr) => {
-  qrcode.generate(qr, { small: true });
-});
+// client.on('qr', (qr) => {
+//   qrcode.generate(qr, { small: true });
+// });
 
 // Bot is ready
 client.on('ready', () => {
