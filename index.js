@@ -15,10 +15,16 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 // Register custom font for the canvas
 registerFont(path.join(__dirname, 'fonts', 'NotoColorEmoji.ttf'), { family: 'NotoColorEmoji' });
 
+// Ensure the authentication folder exists
+const authPath = '/mnt/data/.wwebjs_auth';
+if (!fs.existsSync(authPath)) {
+  fs.mkdirSync(authPath, { recursive: true });
+}
+
 // Initialize WhatsApp Client
 const client = new Client({
   authStrategy: new LocalAuth({
-    dataPath: '/mnt/data/.wwebjs_auth', // Persistent storage path for Railway
+    dataPath: authPath, // Persistent storage path for Railway
   }),
   puppeteer: {
     headless: true,
@@ -113,4 +119,10 @@ client.on('message', async (message) => {
 });
 
 // Start WhatsApp Client
-client.initialize();
+(async () => {
+  try {
+    await client.initialize();
+  } catch (error) {
+    console.error('Error initializing client:', error);
+  }
+})();
