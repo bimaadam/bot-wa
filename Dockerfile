@@ -1,29 +1,28 @@
 FROM node:18-slim
 
-# Install dependencies termasuk Chromium
+# Install dependencies
 RUN apt-get update && apt-get install -y \
     chromium \
     fonts-liberation \
     libappindicator3-1 \
     libasound2 \
     libatk-bridge2.0-0 \
-    libatk1.0-0 \
+    libatspi2.0-0 \
     libcups2 \
-    libdbus-1-3 \
-    libnspr4 \
-    libnss3 \
+    libdbus-glib-1-2 \
     libxcomposite1 \
     libxrandr2 \
-    libxss1 \
-    xdg-utils \
-    --no-install-recommends && rm -rf /var/lib/apt/lists/*
+    libxdamage1 \
+    libxkbcommon0 \
+    --no-install-recommends && \
+    rm -rf /var/lib/apt/lists/*
 
-# Set Puppeteer untuk skip download Chromium
-ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
-ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
-
+# Install Node.js dependencies
 WORKDIR /app
-COPY . /app
+COPY package*.json ./
 RUN npm install
 
-CMD ["npm", "start"]
+# Copy app files
+COPY . .
+
+CMD ["node", "index.js"]
