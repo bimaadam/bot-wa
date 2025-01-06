@@ -16,13 +16,15 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 registerFont(path.join(__dirname, 'fonts', 'NotoColorEmoji.ttf'), { family: 'NotoColorEmoji' });
 
 const client = new Client({
-  authStrategy: new LocalAuth(),
+  authStrategy: new LocalAuth({
+    dataPath: './.wwebjs_auth', // Pastikan path sama dengan yang lu upload
+  }),
   puppeteer: {
     headless: true,
-    executablePath: '/usr/bin/chromium',
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
   },
 });
+
 
 client.on('qr', (qr) => {
   console.log('QR Code Generated! Scan QR untuk login.');
